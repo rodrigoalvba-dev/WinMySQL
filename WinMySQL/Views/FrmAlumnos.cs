@@ -9,11 +9,11 @@ using WinMySQL.Clases;
 
 namespace WinMySQL.Views
 {
-    public partial class Alumnos : Form
+    public partial class FrmAlumnos : Form
     {
         Datos datos = new Datos();
         DataSet ds;
-        public Alumnos()
+        public FrmAlumnos()
         {
             InitializeComponent();
         }
@@ -23,10 +23,11 @@ namespace WinMySQL.Views
             try
             {
                 ds = datos.ejecutar(
-       "SELECT Alumnos.Prim_Nom, Alumnos.Ap_Pat, Materias.NombreMateria " +
-       "FROM Alumno_Materia " +
-       "INNER JOIN Alumnos ON Alumno_Materia.idAlumno = Alumnos.idAlumnos " +
-       "INNER JOIN Materias ON Alumno_Materia.idMateria = Materias.idMaterias");
+   "SELECT Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat " +
+   "FROM Alumnos");
+                DGValumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
 
                 if (ds != null)
                 {

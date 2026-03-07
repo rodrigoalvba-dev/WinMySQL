@@ -1,6 +1,6 @@
 ﻿namespace WinMySQL.Views
 {
-    partial class Alumnos
+    partial class FrmAlumnos
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,9 @@
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
+            // splitContainer1.Panel1
+            // 
+            // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(DGValumnos);
@@ -61,13 +64,13 @@
             DGValumnos.CellContentClick += DGValumnos_CellContentClick;
             DGValumnos.CellContentDoubleClick += CCDoublClicl;
             // 
-            // Alumnos
+            // FrmAlumnos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
-            Name = "Alumnos";
+            Name = "FrmAlumnos";
             Text = "Alumnos";
             Activated += Alumnos_Activated;
             splitContainer1.Panel2.ResumeLayout(false);

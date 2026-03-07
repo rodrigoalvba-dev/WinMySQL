@@ -33,8 +33,7 @@
             TxtNumCont = new TextBox();
             label2 = new Label();
             mySqlCommand1 = new MySqlConnector.MySqlCommand();
-            TxBMaetria = new TextBox();
-            label3 = new Label();
+            buttAcep = new Button();
             SuspendLayout();
             // 
             // label1
@@ -77,29 +76,22 @@
             mySqlCommand1.Transaction = null;
             mySqlCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
-            // TxBMaetria
+            // buttAcep
             // 
-            TxBMaetria.Location = new Point(12, 156);
-            TxBMaetria.Name = "TxBMaetria";
-            TxBMaetria.Size = new Size(145, 27);
-            TxBMaetria.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 117);
-            label3.Name = "label3";
-            label3.Size = new Size(64, 20);
-            label3.TabIndex = 4;
-            label3.Text = "Materia ";
+            buttAcep.Location = new Point(131, 128);
+            buttAcep.Name = "buttAcep";
+            buttAcep.Size = new Size(94, 29);
+            buttAcep.TabIndex = 6;
+            buttAcep.Text = "Aceptar";
+            buttAcep.UseVisualStyleBackColor = true;
+            buttAcep.Click += buttAcep_Click;
             // 
             // FrmAlumno
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(386, 223);
-            Controls.Add(TxBMaetria);
-            Controls.Add(label3);
+            ClientSize = new Size(342, 184);
+            Controls.Add(buttAcep);
             Controls.Add(TxtNumCont);
             Controls.Add(label2);
             Controls.Add(TxtNmbAlu);
@@ -118,7 +110,6 @@
         private TextBox TxtNumCont;
         private Label label2;
         private MySqlConnector.MySqlCommand mySqlCommand1;
-        private TextBox TxBMaetria;
-        private Label label3;
+        private Button buttAcep;
     }
 }
