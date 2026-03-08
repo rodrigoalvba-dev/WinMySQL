@@ -42,7 +42,7 @@ namespace WinMySQL.Views
 
             if (e.RowIndex >= 0)
             {
-                string nombre = "";
+                string nombre=null;
 
                 for (int i = 1; i < 4; i++)
                 {

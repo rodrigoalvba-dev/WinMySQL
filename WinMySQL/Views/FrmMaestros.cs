@@ -20,20 +20,15 @@ namespace WinMySQL.Views
 
         private void butAgreMae_Click(object sender, EventArgs e)
         {
-
+            FrmMaestro maestro = new FrmMaestro();
+            maestro.ShowDialog();
         }
 
         private void ActForm(object sender, EventArgs e)
         {
             try
             {
-                ds = datos.ejecutar(
-   "SELECT NumCont,Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat ,Correo_Ins" +
-   "FROM Alumnos");
-                DGVMaestros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-
-
+                ds = datos.ejecutar("Select * from Maestros");
                 if (ds != null)
                 {
                     DGVMaestros.DataSource = ds.Tables[0];
@@ -64,6 +59,34 @@ namespace WinMySQL.Views
                     MessageBox.Show("Error al eliminar", "Sistema");
                 }
             }
+        }
+
+        private void DobleClickMAestros(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string nombre = "";
+                string correo = DGVMaestros.Rows[e.RowIndex].Cells[5].Value + "";
+
+                for (int i = 1; i < DGVMaestros.Rows[e.RowIndex].Cells.Count - 2; i++)
+                {
+                    if (DGVMaestros.Rows[e.RowIndex].Cells[i].Value != null)
+                        nombre += DGVMaestros.Rows[e.RowIndex].Cells[i].Value.ToString() + " ";
+                }
+
+                FrmMaestro maestro = new FrmMaestro(
+                    nombre,
+                    Convert.ToInt32(DGVMaestros.Rows[e.RowIndex].Cells[0].Value),
+                    correo
+                );
+
+                maestro.ShowDialog();
+            }
+        }
+
+        private void DGVMaestros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

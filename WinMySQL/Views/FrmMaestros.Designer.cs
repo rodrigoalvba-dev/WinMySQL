@@ -95,6 +95,8 @@
             DGVMaestros.RowHeadersWidth = 51;
             DGVMaestros.Size = new Size(800, 351);
             DGVMaestros.TabIndex = 0;
+            DGVMaestros.CellContentClick += DGVMaestros_CellContentClick;
+            DGVMaestros.CellContentDoubleClick += DobleClickMAestros;
             // 
             // FrmMaestros
             // 

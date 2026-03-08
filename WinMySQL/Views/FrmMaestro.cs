@@ -18,9 +18,10 @@ namespace WinMySQL.Views
         {
             InitializeComponent();
         }
-        public FrmMaestro(string Nombre, int numCont,string correo)
+        public FrmMaestro(string Nombre, int numCont, string correo)
         {
             InitializeComponent();
+            this.NOCNT = numCont;
             textBNomProf.Text = Nombre;
             textBNoCont.Text = numCont + "";
             textBCorreoInst.Text = correo;
@@ -42,14 +43,9 @@ namespace WinMySQL.Views
             string apPat = "";
             string apMat = "";
 
-            if (nombreCompleto.Length >= 1)
-                primerNombre = nombreCompleto[0];
-
-            if (nombreCompleto.Length >= 2)
-                apPat = nombreCompleto[1];
-
             if (nombreCompleto.Length >= 3)
             {
+                primerNombre = nombreCompleto[0];
                 segundoNombre = "";
                 apPat = nombreCompleto[1];
                 apMat = nombreCompleto[2];
@@ -57,14 +53,16 @@ namespace WinMySQL.Views
 
             if (nombreCompleto.Length > 4)
             {
-                apPat = nombreCompleto[2];
+                primerNombre = nombreCompleto[0];
+                segundoNombre = nombreCompleto[1];
+               apPat = nombreCompleto[2];
                 apMat = nombreCompleto[3];
             }
             if (updating == false)
             {
                 bool resultado = dt.ejecutarComando(
-                    $"INSERT INTO Alumnos (Prim_Nom,Seg_Nom,Ap_Pat,Ap_Mat,Correo_Ins,NoCont) " +
-                    $"VALUES ('{primerNombre}','{segundoNombre}','{apPat}','{apMat}','{textBCorreoInst}','{textBNoCont}')");
+                    $"INSERT INTO Maestros (Prim_Nom,Seg_Nom,Ap_Pat,Ap_Mat,Correo_Ins,NoCont) " +
+                    $"VALUES ('{primerNombre}','{segundoNombre}','{apPat}','{apMat}','{textBCorreoInst.Text}','{textBNoCont.Text}')");
 
                 if (resultado)
                 {
@@ -79,13 +77,13 @@ namespace WinMySQL.Views
             else
             {
                 bool resultado = dt.ejecutarComando(
-                    $"UPDATE Alumnos SET " +
-                    $"Prim_Nom='{primerNombre}', " +
-                    $"Seg_Nom='{segundoNombre}', " +
-                    $"Ap_Pat='{apPat}', " +
-                    $"Ap_Mat='{apMat}' " +
-                    $"Correo_Ins='{textBCorreoInst}' " +
-                    $"WHERE NumCont={NOCNT}");
+                   $"UPDATE Maestros SET " +
+                   $"Prim_Nom='{primerNombre}', " +
+                   $"Seg_Nom='{segundoNombre}', " +
+                   $"Ap_Pat='{apPat}', " +
+                   $"Ap_Mat='{apMat}', " +
+                   $"Correo_Ins='{textBCorreoInst.Text}' " +
+                   $"WHERE NoCont={NOCNT}");
 
                 if (resultado)
                 {
@@ -98,6 +96,11 @@ namespace WinMySQL.Views
                 }
             }
         }
+
+        private void FrmMaestro_Load(object sender, EventArgs e)
+        {
+
+        }
     }
-    }
+}
 

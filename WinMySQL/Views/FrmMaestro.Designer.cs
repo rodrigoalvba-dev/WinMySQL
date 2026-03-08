@@ -110,6 +110,7 @@
             Controls.Add(button2);
             Name = "FrmMaestro";
             Text = "FrmMaestro";
+            Load += FrmMaestro_Load;
             ResumeLayout(false);
             PerformLayout();
         }
