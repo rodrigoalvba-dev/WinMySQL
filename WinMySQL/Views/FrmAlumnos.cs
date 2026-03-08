@@ -23,7 +23,7 @@ namespace WinMySQL.Views
             try
             {
                 ds = datos.ejecutar(
-   "SELECT NumCont,Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat " +
+   "SELECT NumCont,Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat ,Telefono" +
    "FROM Alumnos");
                 DGValumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
