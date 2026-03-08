@@ -20,7 +20,7 @@ namespace WinMySQL.Views
         }
 
         public frmMateria(int id, string materia, string cve)
-        { 
+        {
             InitializeComponent();
             this.id = id;
             txtMateria.Text = materia;
@@ -61,6 +61,11 @@ namespace WinMySQL.Views
                     MessageBox.Show("Error al actualizar la materia");
                 }
             }
+        }
+
+        private void frmMateria_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

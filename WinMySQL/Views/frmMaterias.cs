@@ -77,5 +77,10 @@ namespace WinMySQL.Views
         {
 
         }
+
+        private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

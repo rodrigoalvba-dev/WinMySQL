@@ -23,7 +23,7 @@ namespace WinMySQL.Views
             try
             {
                 ds = datos.ejecutar(
-   "SELECT Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat " +
+   "SELECT NumCont,Prim_Nom, Seg_Nom, Ap_Pat, Ap_Mat " +
    "FROM Alumnos");
                 DGValumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -39,23 +39,64 @@ namespace WinMySQL.Views
 
         private void CCDoublClicl(object sender, DataGridViewCellEventArgs e)
         {
-           /* if (e.RowIndex >= 0)
+
+            if (e.RowIndex >= 0)
             {
-                FrmAlumno alumno = new FrmAlumno(
-                    Convert.ToInt32(DGValumnos.Rows[e.RowIndex].Cells[0].Value),
-                    DGValumnos.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    DGValumnos.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    DGValumnos.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    DGValumnos.Rows[e.RowIndex].Cells[4].Value.ToString()
+                string nombre = "";
+
+                for (int i = 1; i < 4; i++)
+                {
+                    if (DGValumnos.Rows[e.RowIndex].Cells[1].Value != null)
+                        nombre += DGValumnos.Rows[e.RowIndex].Cells[i].Value.ToString() + " ";
+                    else
+                        nombre += " ";
+                }
+                FrmAlumno alumno = new FrmAlumno(nombre,
+                    Convert.ToInt32(DGValumnos.Rows[e.RowIndex].Cells[0].Value)
                 );
 
                 alumno.ShowDialog();
-            }*/
+            }
         }
 
         private void DGValumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmAlumno alumno = new FrmAlumno();
+            alumno.ShowDialog();
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int numControl = Convert.ToInt32(DGValumnos.CurrentRow.Cells[0].Value);
+
+            if (MessageBox.Show("Deseas eliminar el alumno: " +
+                DGValumnos.CurrentRow.Cells[1].Value.ToString(),
+                "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.Yes)
+            {
+                datos.ejecutarComando($"DELETE FROM Alumno_Materia WHERE idAlumno={numControl}");
+
+                bool f = datos.ejecutarComando($"DELETE FROM Alumnos WHERE NumCont={numControl}");
+
+                if (f)
+                {
+                    MessageBox.Show("Registro eliminado", "Sistema");
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar", "Sistema");
+                }
+            }
         }
     }
 }

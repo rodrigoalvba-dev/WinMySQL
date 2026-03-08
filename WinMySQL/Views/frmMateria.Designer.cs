@@ -38,40 +38,45 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(10, 7);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(71, 25);
+            label1.Size = new Size(60, 20);
             label1.TabIndex = 0;
             label1.Text = "Materia";
             // 
             // txtMateria
             // 
-            txtMateria.Location = new Point(12, 37);
+            txtMateria.Location = new Point(10, 30);
+            txtMateria.Margin = new Padding(2, 2, 2, 2);
             txtMateria.Name = "txtMateria";
-            txtMateria.Size = new Size(424, 31);
+            txtMateria.Size = new Size(340, 27);
             txtMateria.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 85);
+            label2.Location = new Point(10, 68);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(97, 25);
+            label2.Size = new Size(82, 20);
             label2.TabIndex = 2;
             label2.Text = "CVE Oficial";
             // 
             // txtCVE
             // 
-            txtCVE.Location = new Point(12, 113);
+            txtCVE.Location = new Point(10, 90);
+            txtCVE.Margin = new Padding(2, 2, 2, 2);
             txtCVE.Name = "txtCVE";
-            txtCVE.Size = new Size(150, 31);
+            txtCVE.Size = new Size(121, 27);
             txtCVE.TabIndex = 3;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(324, 111);
+            btnAceptar.Location = new Point(259, 89);
+            btnAceptar.Margin = new Padding(2, 2, 2, 2);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(112, 34);
+            btnAceptar.Size = new Size(90, 27);
             btnAceptar.TabIndex = 4;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -79,16 +84,18 @@
             // 
             // frmMateria
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(462, 167);
+            ClientSize = new Size(370, 134);
             Controls.Add(btnAceptar);
             Controls.Add(txtCVE);
             Controls.Add(label2);
             Controls.Add(txtMateria);
             Controls.Add(label1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmMateria";
             Text = "Materia";
+            Load += frmMateria_Load;
             ResumeLayout(false);
             PerformLayout();
         }

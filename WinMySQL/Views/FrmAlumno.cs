@@ -11,7 +11,7 @@ namespace WinMySQL.Views
 {
     public partial class FrmAlumno : Form
     {
-        int id = 0;
+        int NOCNT = 0;
         bool updating = false;
         Datos dt = new Datos();
         public FrmAlumno()
@@ -19,12 +19,11 @@ namespace WinMySQL.Views
             InitializeComponent();
 
         }
-        public FrmAlumno(int id, string materia, string Nombre, string numCont)
+        public FrmAlumno(string Nombre, int numCont)
         {
             InitializeComponent();
-            this.id = id;
             TxtNmbAlu.Text = Nombre;
-            TxtNumCont.Text = numCont;
+            TxtNumCont.Text = numCont+"";
             updating = true;
         }
 
@@ -41,40 +40,67 @@ namespace WinMySQL.Views
         private void buttAcep_Click(object sender, EventArgs e)
         {
             string[] nombreCompleto = TxtNmbAlu.Text.Split(' ');
-            if (nombreCompleto.Length <= 3) { 
-            
+
+            string primerNombre = "";
+            string segundoNombre = "";
+            string apPat = "";
+            string apMat = "";
+
+            if (nombreCompleto.Length >= 1)
+                primerNombre = nombreCompleto[0];
+
+            if (nombreCompleto.Length >= 2)
+                apPat = nombreCompleto[1];
+
+            if (nombreCompleto.Length >= 3)
+            {
+                segundoNombre = "";
+                apPat = nombreCompleto[1];
+                apMat = nombreCompleto[2];
+            }
+
+            if (nombreCompleto.Length > 4)
+            {
+                apPat = nombreCompleto[2];
+                apMat = nombreCompleto[3];
             }
             if (updating == false)
             {
                 bool resultado = dt.ejecutarComando(
-                    $"Insert into Alumnos (Prim_Nom,Seg_Nom,Ap_Pat,Ap_Mat) " +
-                    $"values ('{nombreCompleto[0]}','{nombreCompleto[1]}','{nombreCompleto[2]}','{nombreCompleto[3]}')");
+                    $"INSERT INTO Alumnos (Prim_Nom,Seg_Nom,Ap_Pat,Ap_Mat) " +
+                    $"VALUES ('{primerNombre}','{segundoNombre}','{apPat}','{apMat}')");
 
                 if (resultado)
                 {
-                    MessageBox.Show("Materia agregada correctamente");
+                    MessageBox.Show("Alumno agregado correctamente");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la materia");
+                    MessageBox.Show("Error al agregar el alumno");
                 }
             }
             else
             {
                 bool resultado = dt.ejecutarComando(
-                    $"Update Materias set Materia='{txtMateria.Text}', CVE='{txtCVE.Text}' " +
-                    $"where idMateria={id}");
+                    $"UPDATE Alumnos SET " +
+                    $"Prim_Nom='{primerNombre}', " +
+                    $"Seg_Nom='{segundoNombre}', " +
+                    $"Ap_Pat='{apPat}', " +
+                    $"Ap_Mat='{apMat}' " +
+                    $"WHERE NumCont={NOCNT}");
+
                 if (resultado)
                 {
-                    MessageBox.Show("Materia actualizada correctamente");
+                    MessageBox.Show("Alumno actualizado correctamente");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la materia");
+                    MessageBox.Show("Error al actualizar el alumno");
                 }
-
             }
+        }
     }
 }
+
