@@ -47,15 +47,15 @@ namespace WinMySQL.Views
             string apMat = "";
 
 
-            if (nombreCompleto.Length >= 3)
+            if (nombreCompleto.Length == 3)
             {
                 primerNombre = nombreCompleto[0];
                 segundoNombre = "";
-                apPat = nombreCompleto[1];
-                apMat = nombreCompleto[2];
+                apPat = nombreCompleto[2];
+                apMat = nombreCompleto[3g];
             }
 
-            if (nombreCompleto.Length > 4)
+            if (nombreCompleto.Length == 4)
             {
                 primerNombre = nombreCompleto[0];
                 segundoNombre = nombreCompleto[1];
